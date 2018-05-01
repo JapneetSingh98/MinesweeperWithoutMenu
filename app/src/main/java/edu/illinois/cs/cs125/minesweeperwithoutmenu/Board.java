@@ -3,21 +3,24 @@ package edu.illinois.cs.cs125.minesweeperwithoutmenu;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import android.media.MediaPlayer;
+import android.os.Vibrator;
 
 public class Board extends AppCompatActivity {
 
-    //int percent = 15;
+    int percent = 15;
     int currentScore = 0;
+    private Vibrator myVib;
 
-    Button[][] buttons;
-
+    Button easy;
+    Button medium;
+    Button hard;
+    Button extreme;
     TextView gO1;
     TextView gO2;
     TextView s;
@@ -123,116 +126,19 @@ public class Board extends AppCompatActivity {
     Button r10c10;
     final int[][] board = new int[10][10];
     int numMines = 0;
-    //final MediaPlayer mp = MediaPlayer.create(this, R.raw.minesound);
+    //MediaPlayer mp = MediaPlayer.create(this, R.raw.mine);
+
 
     public void gO(boolean state) {
         if (state) {
             currentScore--;
             s.setText(String.valueOf(currentScore));
             gO1.setText("Game Over!");
-            gO2.setText("You hit a mine");
+            gO2.setText("You hit a mine.");
             //mp.start();
-
-            r1c1.setEnabled(false);
-            r1c2.setEnabled(false);
-            r1c3.setEnabled(false);
-            r1c4.setEnabled(false);
-            r1c5.setEnabled(false);
-            r1c6.setEnabled(false);
-            r1c7.setEnabled(false);
-            r1c8.setEnabled(false);
-            r1c9.setEnabled(false);
-            r1c10.setEnabled(false);
-            r2c1.setEnabled(false);
-            r2c2.setEnabled(false);
-            r2c3.setEnabled(false);
-            r2c4.setEnabled(false);
-            r2c5.setEnabled(false);
-            r2c6.setEnabled(false);
-            r2c7.setEnabled(false);
-            r2c8.setEnabled(false);
-            r2c9.setEnabled(false);
-            r2c10.setEnabled(false);
-            r3c1.setEnabled(false);
-            r3c2.setEnabled(false);
-            r3c3.setEnabled(false);
-            r3c4.setEnabled(false);
-            r3c5.setEnabled(false);
-            r3c6.setEnabled(false);
-            r3c7.setEnabled(false);
-            r3c8.setEnabled(false);
-            r3c9.setEnabled(false);
-            r3c10.setEnabled(false);
-            r4c1.setEnabled(false);
-            r4c2.setEnabled(false);
-            r4c3.setEnabled(false);
-            r4c4.setEnabled(false);
-            r4c5.setEnabled(false);
-            r4c6.setEnabled(false);
-            r4c7.setEnabled(false);
-            r4c8.setEnabled(false);
-            r4c9.setEnabled(false);
-            r4c10.setEnabled(false);
-            r5c1.setEnabled(false);
-            r5c2.setEnabled(false);
-            r5c3.setEnabled(false);
-            r5c4.setEnabled(false);
-            r5c5.setEnabled(false);
-            r5c6.setEnabled(false);
-            r5c7.setEnabled(false);
-            r5c8.setEnabled(false);
-            r5c9.setEnabled(false);
-            r5c10.setEnabled(false);
-            r6c1.setEnabled(false);
-            r6c2.setEnabled(false);
-            r6c3.setEnabled(false);
-            r6c4.setEnabled(false);
-            r6c5.setEnabled(false);
-            r6c6.setEnabled(false);
-            r6c7.setEnabled(false);
-            r6c8.setEnabled(false);
-            r6c9.setEnabled(false);
-            r6c10.setEnabled(false);
-            r7c1.setEnabled(false);
-            r7c2.setEnabled(false);
-            r7c3.setEnabled(false);
-            r7c4.setEnabled(false);
-            r7c5.setEnabled(false);
-            r7c6.setEnabled(false);
-            r7c7.setEnabled(false);
-            r7c8.setEnabled(false);
-            r7c9.setEnabled(false);
-            r7c10.setEnabled(false);
-            r8c1.setEnabled(false);
-            r8c2.setEnabled(false);
-            r8c3.setEnabled(false);
-            r8c4.setEnabled(false);
-            r8c5.setEnabled(false);
-            r8c6.setEnabled(false);
-            r8c7.setEnabled(false);
-            r8c8.setEnabled(false);
-            r8c9.setEnabled(false);
-            r8c10.setEnabled(false);
-            r9c1.setEnabled(false);
-            r9c2.setEnabled(false);
-            r9c3.setEnabled(false);
-            r9c4.setEnabled(false);
-            r9c5.setEnabled(false);
-            r9c6.setEnabled(false);
-            r9c7.setEnabled(false);
-            r9c8.setEnabled(false);
-            r9c9.setEnabled(false);
-            r9c10.setEnabled(false);
-            r10c1.setEnabled(false);
-            r10c2.setEnabled(false);
-            r10c3.setEnabled(false);
-            r10c4.setEnabled(false);
-            r10c5.setEnabled(false);
-            r10c6.setEnabled(false);
-            r10c7.setEnabled(false);
-            r10c8.setEnabled(false);
-            r10c9.setEnabled(false);
-            r10c10.setEnabled(false);
+            myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
+            myVib.vibrate(50);
+            disableGrid();
         }
     }
     public void checkIfOver() {
@@ -347,18 +253,15 @@ public class Board extends AppCompatActivity {
         gO1 = (TextView)findViewById(R.id.gameOver1);
         gO2 = (TextView)findViewById(R.id.gameOver2);
         s = (TextView)findViewById(R.id.score);
+        easy = findViewById(R.id.easy);
+        medium = findViewById(R.id.medium);
+        hard = findViewById(R.id.hard);
+        extreme = findViewById(R.id.extreme);
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_board);
-
-          setup();
-        //creating board
+    void createBoard() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (Math.random() * 100 < 15) { //change 15 to variable name once we figure it out
+                if (Math.random() * 100 < percent) { //change 15 to variable name once we figure it out
                     board[i][j] = -1;  //negative number indicates mine
                     numMines++;
 
@@ -414,6 +317,265 @@ public class Board extends AppCompatActivity {
                 Log.e("MS:create board", "spot created");
             }
         }
+    }
+    void disableGrid() {
+        r1c1.setEnabled(false);
+        r1c2.setEnabled(false);
+        r1c3.setEnabled(false);
+        r1c4.setEnabled(false);
+        r1c5.setEnabled(false);
+        r1c6.setEnabled(false);
+        r1c7.setEnabled(false);
+        r1c8.setEnabled(false);
+        r1c9.setEnabled(false);
+        r1c10.setEnabled(false);
+        r2c1.setEnabled(false);
+        r2c2.setEnabled(false);
+        r2c3.setEnabled(false);
+        r2c4.setEnabled(false);
+        r2c5.setEnabled(false);
+        r2c6.setEnabled(false);
+        r2c7.setEnabled(false);
+        r2c8.setEnabled(false);
+        r2c9.setEnabled(false);
+        r2c10.setEnabled(false);
+        r3c1.setEnabled(false);
+        r3c2.setEnabled(false);
+        r3c3.setEnabled(false);
+        r3c4.setEnabled(false);
+        r3c5.setEnabled(false);
+        r3c6.setEnabled(false);
+        r3c7.setEnabled(false);
+        r3c8.setEnabled(false);
+        r3c9.setEnabled(false);
+        r3c10.setEnabled(false);
+        r4c1.setEnabled(false);
+        r4c2.setEnabled(false);
+        r4c3.setEnabled(false);
+        r4c4.setEnabled(false);
+        r4c5.setEnabled(false);
+        r4c6.setEnabled(false);
+        r4c7.setEnabled(false);
+        r4c8.setEnabled(false);
+        r4c9.setEnabled(false);
+        r4c10.setEnabled(false);
+        r5c1.setEnabled(false);
+        r5c2.setEnabled(false);
+        r5c3.setEnabled(false);
+        r5c4.setEnabled(false);
+        r5c5.setEnabled(false);
+        r5c6.setEnabled(false);
+        r5c7.setEnabled(false);
+        r5c8.setEnabled(false);
+        r5c9.setEnabled(false);
+        r5c10.setEnabled(false);
+        r6c1.setEnabled(false);
+        r6c2.setEnabled(false);
+        r6c3.setEnabled(false);
+        r6c4.setEnabled(false);
+        r6c5.setEnabled(false);
+        r6c6.setEnabled(false);
+        r6c7.setEnabled(false);
+        r6c8.setEnabled(false);
+        r6c9.setEnabled(false);
+        r6c10.setEnabled(false);
+        r7c1.setEnabled(false);
+        r7c2.setEnabled(false);
+        r7c3.setEnabled(false);
+        r7c4.setEnabled(false);
+        r7c5.setEnabled(false);
+        r7c6.setEnabled(false);
+        r7c7.setEnabled(false);
+        r7c8.setEnabled(false);
+        r7c9.setEnabled(false);
+        r7c10.setEnabled(false);
+        r8c1.setEnabled(false);
+        r8c2.setEnabled(false);
+        r8c3.setEnabled(false);
+        r8c4.setEnabled(false);
+        r8c5.setEnabled(false);
+        r8c6.setEnabled(false);
+        r8c7.setEnabled(false);
+        r8c8.setEnabled(false);
+        r8c9.setEnabled(false);
+        r8c10.setEnabled(false);
+        r9c1.setEnabled(false);
+        r9c2.setEnabled(false);
+        r9c3.setEnabled(false);
+        r9c4.setEnabled(false);
+        r9c5.setEnabled(false);
+        r9c6.setEnabled(false);
+        r9c7.setEnabled(false);
+        r9c8.setEnabled(false);
+        r9c9.setEnabled(false);
+        r9c10.setEnabled(false);
+        r10c1.setEnabled(false);
+        r10c2.setEnabled(false);
+        r10c3.setEnabled(false);
+        r10c4.setEnabled(false);
+        r10c5.setEnabled(false);
+        r10c6.setEnabled(false);
+        r10c7.setEnabled(false);
+        r10c8.setEnabled(false);
+        r10c9.setEnabled(false);
+        r10c10.setEnabled(false);
+    }
+    void enableGrid() {
+        r1c1.setEnabled(true);
+        r1c2.setEnabled(true);
+        r1c3.setEnabled(true);
+        r1c4.setEnabled(true);
+        r1c5.setEnabled(true);
+        r1c6.setEnabled(true);
+        r1c7.setEnabled(true);
+        r1c8.setEnabled(true);
+        r1c9.setEnabled(true);
+        r1c10.setEnabled(true);
+        r2c1.setEnabled(true);
+        r2c2.setEnabled(true);
+        r2c3.setEnabled(true);
+        r2c4.setEnabled(true);
+        r2c5.setEnabled(true);
+        r2c6.setEnabled(true);
+        r2c7.setEnabled(true);
+        r2c8.setEnabled(true);
+        r2c9.setEnabled(true);
+        r2c10.setEnabled(true);
+        r3c1.setEnabled(true);
+        r3c2.setEnabled(true);
+        r3c3.setEnabled(true);
+        r3c4.setEnabled(true);
+        r3c5.setEnabled(true);
+        r3c6.setEnabled(true);
+        r3c7.setEnabled(true);
+        r3c8.setEnabled(true);
+        r3c9.setEnabled(true);
+        r3c10.setEnabled(true);
+        r4c1.setEnabled(true);
+        r4c2.setEnabled(true);
+        r4c3.setEnabled(true);
+        r4c4.setEnabled(true);
+        r4c5.setEnabled(true);
+        r4c6.setEnabled(true);
+        r4c7.setEnabled(true);
+        r4c8.setEnabled(true);
+        r4c9.setEnabled(true);
+        r4c10.setEnabled(true);
+        r5c1.setEnabled(true);
+        r5c2.setEnabled(true);
+        r5c3.setEnabled(true);
+        r5c4.setEnabled(true);
+        r5c5.setEnabled(true);
+        r5c6.setEnabled(true);
+        r5c7.setEnabled(true);
+        r5c8.setEnabled(true);
+        r5c9.setEnabled(true);
+        r5c10.setEnabled(true);
+        r6c1.setEnabled(true);
+        r6c2.setEnabled(true);
+        r6c3.setEnabled(true);
+        r6c4.setEnabled(true);
+        r6c5.setEnabled(true);
+        r6c6.setEnabled(true);
+        r6c7.setEnabled(true);
+        r6c8.setEnabled(true);
+        r6c9.setEnabled(true);
+        r6c10.setEnabled(true);
+        r7c1.setEnabled(true);
+        r7c2.setEnabled(true);
+        r7c3.setEnabled(true);
+        r7c4.setEnabled(true);
+        r7c5.setEnabled(true);
+        r7c6.setEnabled(true);
+        r7c7.setEnabled(true);
+        r7c8.setEnabled(true);
+        r7c9.setEnabled(true);
+        r7c10.setEnabled(true);
+        r8c1.setEnabled(true);
+        r8c2.setEnabled(true);
+        r8c3.setEnabled(true);
+        r8c4.setEnabled(true);
+        r8c5.setEnabled(true);
+        r8c6.setEnabled(true);
+        r8c7.setEnabled(true);
+        r8c8.setEnabled(true);
+        r8c9.setEnabled(true);
+        r8c10.setEnabled(true);
+        r9c1.setEnabled(true);
+        r9c2.setEnabled(true);
+        r9c3.setEnabled(true);
+        r9c4.setEnabled(true);
+        r9c5.setEnabled(true);
+        r9c6.setEnabled(true);
+        r9c7.setEnabled(true);
+        r9c8.setEnabled(true);
+        r9c9.setEnabled(true);
+        r9c10.setEnabled(true);
+        r10c1.setEnabled(true);
+        r10c2.setEnabled(true);
+        r10c3.setEnabled(true);
+        r10c4.setEnabled(true);
+        r10c5.setEnabled(true);
+        r10c6.setEnabled(true);
+        r10c7.setEnabled(true);
+        r10c8.setEnabled(true);
+        r10c9.setEnabled(true);
+        r10c10.setEnabled(true);
+    }
+    void disableMenu() {
+        easy.setEnabled(false);
+        medium.setEnabled(false);
+        hard.setEnabled(false);
+        extreme.setEnabled(false);
+        easy.setVisibility (View.INVISIBLE);
+        medium.setVisibility (View.INVISIBLE);
+        hard.setVisibility (View.INVISIBLE);
+        extreme.setVisibility (View.INVISIBLE);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_board);
+        setup();
+        disableGrid();
+
+        easy.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                disableMenu();
+                percent = 10;
+                createBoard();
+                enableGrid();
+            }
+        });
+
+        medium.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                disableMenu();
+                percent = 15;
+                createBoard();
+                enableGrid();
+            }
+        });
+
+        hard.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                disableMenu();
+                percent = 20;
+                createBoard();
+                enableGrid();
+            }
+        });
+
+        extreme.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                disableMenu();
+                percent = 30;
+                createBoard();
+                enableGrid();
+            }
+        });
+
 
 
         //Row 1
@@ -587,7 +749,7 @@ public class Board extends AppCompatActivity {
             public void onClick(View v) {
                 r2c1.setEnabled(false);
                 currentScore++;
-                
+                s.setText(String.valueOf(currentScore));
                 if (board[0][1] > 0) {
                     r2c1.setText(String.valueOf(board[0][1]));
                 } else if (board[0][1] < 0) {
@@ -1819,7 +1981,7 @@ public class Board extends AppCompatActivity {
                 currentScore++;
                 s.setText(String.valueOf(currentScore));
                 if (board[6][8] > 0) {
-                    r9c6.setText(String.valueOf(board[6][8]));
+                    r9c7.setText(String.valueOf(board[6][8]));
                 } else if (board[6][8] < 0) {
                     r9c6.setText("X");
                     gO(true);

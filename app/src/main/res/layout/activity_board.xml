@@ -11,194 +11,195 @@
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="380dp"
+        android:layout_marginTop="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/R1C1"
-            android:enabled="true"
-            style="@android:style/Widget.Button.Small"
-            android:layout_width="38dp"
-            android:layout_height="38dp" />
-
-        <Button
-            android:id="@+id/R1C2"
-            android:enabled="true"
-            style="@android:style/Widget.Button.Small"
-            android:layout_width="38dp"
-            android:layout_height="38dp" />
-
-        <Button
-            android:id="@+id/R1C3"
-            android:enabled="true"
-            style="@android:style/Widget.Button.Small"
-            android:layout_width="38dp"
-            android:layout_height="38dp" />
-
-        <Button
-            android:id="@+id/R1C4"
-            android:enabled="true"
-            style="@android:style/Widget.Button.Small"
-            android:layout_width="38dp"
-            android:layout_height="38dp" />
-
-        <Button
-            android:id="@+id/R1C5"
-            android:enabled="true"
-            style="@android:style/Widget.Button.Small"
-            android:layout_width="38dp"
-            android:layout_height="38dp" />
-
-        <Button
-            android:id="@+id/R1C6"
-            android:enabled="true"
-            style="@android:style/Widget.Button.Small"
-            android:layout_width="38dp"
-            android:layout_height="38dp" />
-
-        <Button
-            android:id="@+id/R1C7"
-            android:enabled="true"
-            style="@android:style/Widget.Button.Small"
-            android:layout_width="38dp"
-            android:layout_height="38dp" />
-
-        <Button
-            android:id="@+id/R1C8"
-            android:enabled="true"
-            style="@android:style/Widget.Button.Small"
-            android:layout_width="38dp"
-            android:layout_height="38dp" />
-
-        <Button
-            android:id="@+id/R1C9"
-            android:enabled="true"
-            style="@android:style/Widget.Button.Small"
-            android:layout_width="38dp"
-            android:layout_height="38dp" />
-
-        <Button
-            android:id="@+id/R1C10"
-            android:enabled="true"
-            style="@android:style/Widget.Button.Small"
-            android:layout_width="38dp"
-            android:layout_height="38dp" />
-
-        <Button
-            android:id="@+id/R2C1"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true" />
+
+        <Button
+            android:id="@+id/R1C2"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:enabled="true" />
+
+        <Button
+            android:id="@+id/R1C3"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:enabled="true" />
+
+        <Button
+            android:id="@+id/R1C4"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:enabled="true" />
+
+        <Button
+            android:id="@+id/R1C5"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:enabled="true" />
+
+        <Button
+            android:id="@+id/R1C6"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:enabled="true" />
+
+        <Button
+            android:id="@+id/R1C7"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:enabled="true" />
+
+        <Button
+            android:id="@+id/R1C8"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:enabled="true" />
+
+        <Button
+            android:id="@+id/R1C9"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:enabled="true" />
+
+        <Button
+            android:id="@+id/R1C10"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:enabled="true" />
+
+        <Button
+            android:id="@+id/R2C1"
+            style="@android:style/Widget.Button.Small"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="0"
             app:layout_row="1" />
 
         <Button
             android:id="@+id/R2C2"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="1"
             app:layout_row="1" />
 
         <Button
             android:id="@+id/R2C3"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="2"
             app:layout_row="1" />
 
         <Button
             android:id="@+id/R2C4"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="3"
             app:layout_row="1" />
 
         <Button
             android:id="@+id/R2C5"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="4"
             app:layout_row="1" />
 
         <Button
             android:id="@+id/R2C6"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="5"
             app:layout_row="1" />
 
         <Button
             android:id="@+id/R2C7"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="6"
             app:layout_row="1" />
 
         <Button
             android:id="@+id/R2C8"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="7"
             app:layout_row="1" />
 
         <Button
             android:id="@+id/R2C9"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="8"
             app:layout_row="1" />
 
         <Button
             android:id="@+id/R2C10"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="9"
             app:layout_row="1" />
 
         <Button
             android:id="@+id/R3C1"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="0"
             app:layout_row="2" />
 
         <Button
             android:id="@+id/R3C2"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="1"
             app:layout_row="2" />
 
         <Button
             android:id="@+id/R3C3"
-            android:enabled="true"
             style="@android:style/Widget.Button.Small"
             android:layout_width="38dp"
             android:layout_height="38dp"
+            android:enabled="true"
             app:layout_column="2"
             app:layout_row="2" />
 
@@ -828,7 +829,7 @@
         android:layout_marginLeft="72dp"
         android:layout_marginRight="71dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="412dp"
         android:text="Minesweeper"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="40sp"
@@ -902,5 +903,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/score"
         app:layout_constraintTop_toBottomOf="@+id/gameOver1" />
+
+    <Button
+        android:id="@+id/easy"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="95dp"
+        android:layout_height="32dp"
+        android:text="Easy"
+        app:layout_constraintEnd_toStartOf="@+id/medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/medium"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="95dp"
+        android:layout_height="32dp"
+        android:text="Medium"
+        app:layout_constraintEnd_toStartOf="@+id/hard"
+        app:layout_constraintStart_toEndOf="@+id/easy"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/hard"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="95dp"
+        android:layout_height="32dp"
+        android:text="Hard"
+        app:layout_constraintEnd_toStartOf="@+id/extreme"
+        app:layout_constraintStart_toEndOf="@+id/medium"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/extreme"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="95dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:text="X-treme"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hard"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
