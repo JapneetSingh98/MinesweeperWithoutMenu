@@ -137,13 +137,15 @@ public class Board extends AppCompatActivity {
             gO2.setText("You hit a mine.");
             //mp.start();
             myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
-            myVib.vibrate(50);
+            myVib.vibrate(300);
             disableGrid();
         }
     }
     public void checkIfOver() {
         if (currentScore == 100 - numMines) {
             gO1.setText("You Won!");
+            myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
+            myVib.vibrate(1000);
         }
     }
 
@@ -1009,9 +1011,9 @@ public class Board extends AppCompatActivity {
                 currentScore++;
                 s.setText(String.valueOf(currentScore));
                 if (board[6][2] > 0) {
-                    r3c6.setText(String.valueOf(board[6][2]));
+                    r3c7.setText(String.valueOf(board[6][2]));
                 } else if (board[6][2] < 0) {
-                    r3c6.setText("X");
+                    r3c7.setText("X");
                     gO(true);
                 }
                 checkIfOver();
