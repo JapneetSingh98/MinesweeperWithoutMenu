@@ -7,8 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import android.media.MediaPlayer;
 import android.os.Vibrator;
 
 public class Board extends AppCompatActivity {
@@ -126,7 +124,6 @@ public class Board extends AppCompatActivity {
     Button r10c10;
     final int[][] board = new int[10][10];
     int numMines = 0;
-    //MediaPlayer mp = MediaPlayer.create(this, R.raw.mine);
 
 
     public void gO(boolean state) {
@@ -539,6 +536,7 @@ public class Board extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
+
         setup();
         disableGrid();
 
@@ -1140,9 +1138,9 @@ public class Board extends AppCompatActivity {
                 r4c5.setEnabled(false);
                 currentScore++;
                 s.setText(String.valueOf(currentScore));
-                if (board[4][2] > 0) {
-                    r4c5.setText(String.valueOf(board[4][2]));
-                } else if (board[4][2] < 0) {
+                if (board[4][3] > 0) {
+                    r4c5.setText(String.valueOf(board[4][3]));
+                } else if (board[4][3] < 0) {
                     r4c5.setText("X");
                     gO(true);
                 }
@@ -1985,7 +1983,7 @@ public class Board extends AppCompatActivity {
                 if (board[6][8] > 0) {
                     r9c7.setText(String.valueOf(board[6][8]));
                 } else if (board[6][8] < 0) {
-                    r9c6.setText("X");
+                    r9c7.setText("X");
                     gO(true);
                 }
                 checkIfOver();
@@ -2145,9 +2143,9 @@ public class Board extends AppCompatActivity {
                 currentScore++;
                 s.setText(String.valueOf(currentScore));
                 if (board[6][9] > 0) {
-                    r10c6.setText(String.valueOf(board[6][9]));
+                    r10c7.setText(String.valueOf(board[6][9]));
                 } else if (board[6][9] < 0) {
-                    r10c6.setText("X");
+                    r10c7.setText("X");
                     gO(true);
                 }
                 checkIfOver();
