@@ -22,6 +22,9 @@ public class Board extends AppCompatActivity {
     TextView message;
     TextView s;
     TextView mR;
+    TextView areYouSure;
+    Button yes;
+    Button no;
     Button flag;
     Button reset;
     Button r1c1;
@@ -128,10 +131,12 @@ public class Board extends AppCompatActivity {
     int numMines = 0;
     int minesRemaining;
     boolean flagging;
+    boolean gameOver = false;
 
 
     public void gO(boolean state) {
         if (state) {
+            gameOver = true;
             flag.setEnabled(false);
             currentScore--;
             s.setText(String.valueOf(currentScore));
@@ -143,6 +148,7 @@ public class Board extends AppCompatActivity {
     }
     public void checkIfOver() {
         if (currentScore == 100 - numMines) {
+            gameOver = true;
             message.setText("You Won!");
             myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
             myVib.vibrate(1000);
@@ -254,6 +260,9 @@ public class Board extends AppCompatActivity {
         r10c10 = findViewById(R.id.R10C10);
         flag = findViewById(R.id.flag);
         reset = findViewById(R.id.reset);
+        areYouSure = findViewById(R.id.areYouSure);
+        yes = findViewById(R.id.yes);
+        no = findViewById(R.id.no);
         message = (TextView)findViewById(R.id.message);
         s = (TextView)findViewById(R.id.score);
         mR = (TextView)findViewById(R.id.mines);
@@ -556,11 +565,152 @@ public class Board extends AppCompatActivity {
         hard.setVisibility (View.INVISIBLE);
         extreme.setVisibility (View.INVISIBLE);
     }
+    void hideAreYouSure() {
+        areYouSure.setVisibility(View.INVISIBLE);
+        yes.setVisibility(View.INVISIBLE);
+        no.setVisibility(View.INVISIBLE);
+    }
+    void showAreYouSure() {
+        disableGrid();
+        areYouSure.setVisibility(View.VISIBLE);
+        yes.setVisibility(View.VISIBLE);
+        no.setVisibility(View.VISIBLE);
+
+        yes.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                r1c1.setText("");
+                r1c2.setText("");
+                r1c3.setText("");
+                r1c4.setText("");
+                r1c5.setText("");
+                r1c6.setText("");
+                r1c7.setText("");
+                r1c8.setText("");
+                r1c9.setText("");
+                r1c10.setText("");
+
+                r2c1.setText("");
+                r2c2.setText("");
+                r2c3.setText("");
+                r2c4.setText("");
+                r2c5.setText("");
+                r2c6.setText("");
+                r2c7.setText("");
+                r2c8.setText("");
+                r2c9.setText("");
+                r2c10.setText("");
+
+                r3c1.setText("");
+                r3c2.setText("");
+                r3c3.setText("");
+                r3c4.setText("");
+                r3c5.setText("");
+                r3c6.setText("");
+                r3c7.setText("");
+                r3c8.setText("");
+                r3c9.setText("");
+                r3c10.setText("");
+
+                r4c1.setText("");
+                r4c2.setText("");
+                r4c3.setText("");
+                r4c4.setText("");
+                r4c5.setText("");
+                r4c6.setText("");
+                r4c7.setText("");
+                r4c8.setText("");
+                r4c9.setText("");
+                r4c10.setText("");
+
+                r5c1.setText("");
+                r5c2.setText("");
+                r5c3.setText("");
+                r5c4.setText("");
+                r5c5.setText("");
+                r5c6.setText("");
+                r5c7.setText("");
+                r5c8.setText("");
+                r5c9.setText("");
+                r5c10.setText("");
+
+                r6c1.setText("");
+                r6c2.setText("");
+                r6c3.setText("");
+                r6c4.setText("");
+                r6c5.setText("");
+                r6c6.setText("");
+                r6c7.setText("");
+                r6c8.setText("");
+                r6c9.setText("");
+                r6c10.setText("");
+
+                r7c1.setText("");
+                r7c2.setText("");
+                r7c3.setText("");
+                r7c4.setText("");
+                r7c5.setText("");
+                r7c6.setText("");
+                r7c7.setText("");
+                r7c8.setText("");
+                r7c9.setText("");
+                r7c10.setText("");
+
+                r8c1.setText("");
+                r8c2.setText("");
+                r8c3.setText("");
+                r8c4.setText("");
+                r8c5.setText("");
+                r8c6.setText("");
+                r8c7.setText("");
+                r8c8.setText("");
+                r8c9.setText("");
+                r8c10.setText("");
+
+                r9c1.setText("");
+                r9c2.setText("");
+                r9c3.setText("");
+                r9c4.setText("");
+                r9c5.setText("");
+                r9c6.setText("");
+                r9c7.setText("");
+                r9c8.setText("");
+                r9c9.setText("");
+                r9c10.setText("");
+
+                r10c1.setText("");
+                r10c2.setText("");
+                r10c3.setText("");
+                r10c4.setText("");
+                r10c5.setText("");
+                r10c6.setText("");
+                r10c7.setText("");
+                r10c8.setText("");
+                r10c9.setText("");
+                r10c10.setText("");
+                currentScore = 0;
+                minesRemaining = 0;
+                numMines = 0;
+                message.setText("");
+                mR.setText(String.valueOf(minesRemaining));
+                s.setText(String.valueOf(currentScore));
+
+                play();
+            }
+        });
+        no.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                hideAreYouSure();
+                enableGrid();
+            }
+        });
+    }
 
     void play() {
+        gameOver = false;
         setup();
         disableGrid();
         enableMenu();
+        hideAreYouSure();
 
         easy.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -3643,123 +3793,128 @@ public class Board extends AppCompatActivity {
 
         reset.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                r1c1.setText("");
-                r1c2.setText("");
-                r1c3.setText("");
-                r1c4.setText("");
-                r1c5.setText("");
-                r1c6.setText("");
-                r1c7.setText("");
-                r1c8.setText("");
-                r1c9.setText("");
-                r1c10.setText("");
+                if (gameOver == false) {
+                    showAreYouSure();
+                } else {
+                    r1c1.setText("");
+                    r1c2.setText("");
+                    r1c3.setText("");
+                    r1c4.setText("");
+                    r1c5.setText("");
+                    r1c6.setText("");
+                    r1c7.setText("");
+                    r1c8.setText("");
+                    r1c9.setText("");
+                    r1c10.setText("");
 
-                r2c1.setText("");
-                r2c2.setText("");
-                r2c3.setText("");
-                r2c4.setText("");
-                r2c5.setText("");
-                r2c6.setText("");
-                r2c7.setText("");
-                r2c8.setText("");
-                r2c9.setText("");
-                r2c10.setText("");
+                    r2c1.setText("");
+                    r2c2.setText("");
+                    r2c3.setText("");
+                    r2c4.setText("");
+                    r2c5.setText("");
+                    r2c6.setText("");
+                    r2c7.setText("");
+                    r2c8.setText("");
+                    r2c9.setText("");
+                    r2c10.setText("");
 
-                r3c1.setText("");
-                r3c2.setText("");
-                r3c3.setText("");
-                r3c4.setText("");
-                r3c5.setText("");
-                r3c6.setText("");
-                r3c7.setText("");
-                r3c8.setText("");
-                r3c9.setText("");
-                r3c10.setText("");
+                    r3c1.setText("");
+                    r3c2.setText("");
+                    r3c3.setText("");
+                    r3c4.setText("");
+                    r3c5.setText("");
+                    r3c6.setText("");
+                    r3c7.setText("");
+                    r3c8.setText("");
+                    r3c9.setText("");
+                    r3c10.setText("");
 
-                r1c1.setText("");
-                r4c2.setText("");
-                r4c3.setText("");
-                r4c4.setText("");
-                r4c5.setText("");
-                r4c6.setText("");
-                r4c7.setText("");
-                r4c8.setText("");
-                r4c9.setText("");
-                r4c10.setText("");
+                    r4c1.setText("");
+                    r4c2.setText("");
+                    r4c3.setText("");
+                    r4c4.setText("");
+                    r4c5.setText("");
+                    r4c6.setText("");
+                    r4c7.setText("");
+                    r4c8.setText("");
+                    r4c9.setText("");
+                    r4c10.setText("");
 
-                r5c1.setText("");
-                r5c2.setText("");
-                r5c3.setText("");
-                r5c4.setText("");
-                r5c5.setText("");
-                r5c6.setText("");
-                r5c7.setText("");
-                r5c8.setText("");
-                r5c9.setText("");
-                r5c10.setText("");
+                    r5c1.setText("");
+                    r5c2.setText("");
+                    r5c3.setText("");
+                    r5c4.setText("");
+                    r5c5.setText("");
+                    r5c6.setText("");
+                    r5c7.setText("");
+                    r5c8.setText("");
+                    r5c9.setText("");
+                    r5c10.setText("");
 
-                r6c1.setText("");
-                r6c2.setText("");
-                r6c3.setText("");
-                r6c4.setText("");
-                r6c5.setText("");
-                r6c6.setText("");
-                r6c7.setText("");
-                r6c8.setText("");
-                r6c9.setText("");
-                r6c10.setText("");
+                    r6c1.setText("");
+                    r6c2.setText("");
+                    r6c3.setText("");
+                    r6c4.setText("");
+                    r6c5.setText("");
+                    r6c6.setText("");
+                    r6c7.setText("");
+                    r6c8.setText("");
+                    r6c9.setText("");
+                    r6c10.setText("");
 
-                r7c1.setText("");
-                r7c2.setText("");
-                r7c3.setText("");
-                r7c4.setText("");
-                r7c5.setText("");
-                r7c6.setText("");
-                r7c7.setText("");
-                r7c8.setText("");
-                r7c9.setText("");
-                r7c10.setText("");
+                    r7c1.setText("");
+                    r7c2.setText("");
+                    r7c3.setText("");
+                    r7c4.setText("");
+                    r7c5.setText("");
+                    r7c6.setText("");
+                    r7c7.setText("");
+                    r7c8.setText("");
+                    r7c9.setText("");
+                    r7c10.setText("");
 
-                r8c1.setText("");
-                r8c2.setText("");
-                r8c3.setText("");
-                r8c4.setText("");
-                r8c5.setText("");
-                r8c6.setText("");
-                r8c7.setText("");
-                r8c8.setText("");
-                r8c9.setText("");
-                r8c10.setText("");
+                    r8c1.setText("");
+                    r8c2.setText("");
+                    r8c3.setText("");
+                    r8c4.setText("");
+                    r8c5.setText("");
+                    r8c6.setText("");
+                    r8c7.setText("");
+                    r8c8.setText("");
+                    r8c9.setText("");
+                    r8c10.setText("");
 
-                r9c1.setText("");
-                r9c2.setText("");
-                r9c3.setText("");
-                r9c4.setText("");
-                r9c5.setText("");
-                r9c6.setText("");
-                r9c7.setText("");
-                r9c8.setText("");
-                r9c9.setText("");
-                r9c10.setText("");
+                    r9c1.setText("");
+                    r9c2.setText("");
+                    r9c3.setText("");
+                    r9c4.setText("");
+                    r9c5.setText("");
+                    r9c6.setText("");
+                    r9c7.setText("");
+                    r9c8.setText("");
+                    r9c9.setText("");
+                    r9c10.setText("");
 
-                r10c1.setText("");
-                r10c2.setText("");
-                r10c3.setText("");
-                r10c4.setText("");
-                r10c5.setText("");
-                r10c6.setText("");
-                r10c7.setText("");
-                r10c8.setText("");
-                r10c9.setText("");
-                r10c10.setText("");
-                currentScore = 0;
-                minesRemaining = 0;
-                numMines = 0;
-                message.setText("");
-                mR.setText(String.valueOf(minesRemaining));
-                s.setText(String.valueOf(currentScore));
+                    r10c1.setText("");
+                    r10c2.setText("");
+                    r10c3.setText("");
+                    r10c4.setText("");
+                    r10c5.setText("");
+                    r10c6.setText("");
+                    r10c7.setText("");
+                    r10c8.setText("");
+                    r10c9.setText("");
+                    r10c10.setText("");
+                    currentScore = 0;
+                    minesRemaining = 0;
+                    numMines = 0;
+                    message.setText("");
+                    mR.setText(String.valueOf(minesRemaining));
+                    s.setText(String.valueOf(currentScore));
 
-                play();
+                    play();
+                }
+
             }
         });
 

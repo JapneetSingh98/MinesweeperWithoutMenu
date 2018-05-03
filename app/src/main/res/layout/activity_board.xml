@@ -922,4 +922,34 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/areYouSure"
+        android:layout_width="175dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Are you sure?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/reset"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/yes"
+        android:layout_width="84dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginStart="1dp"
+        android:text="Yes"
+        app:layout_constraintBottom_toTopOf="@+id/reset"
+        app:layout_constraintStart_toEndOf="@+id/areYouSure" />
+
+    <Button
+        android:id="@+id/no"
+        android:layout_width="84dp"
+        android:layout_height="35dp"
+        android:text="No"
+        app:layout_constraintBottom_toTopOf="@+id/reset"
+        app:layout_constraintStart_toEndOf="@+id/yes" />
+
 </android.support.constraint.ConstraintLayout>
