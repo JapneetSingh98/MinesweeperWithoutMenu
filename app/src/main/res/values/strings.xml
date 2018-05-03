@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MinesweeperWithoutMenu</string>
+    <string name="easy">Easy</string>
+    <string name="x_treme">X-treme</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="flag">Flag</string>
 </resources>
